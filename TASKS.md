@@ -1,5 +1,5 @@
 ### Tasks
-- [ ] Map creation (.5 Day)
+- ~~Map creation (.5 Day)~~
 - [ ] Character control (.5 Day)
 - [ ] Projectile creation and cleanup (1 day)
 - [ ] Health mechanics for player and enemy (1 day)
