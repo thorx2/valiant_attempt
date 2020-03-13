@@ -1,14 +1,14 @@
 ### Tasks
-- [ ] Map creation (.5 Day)
-- [ ] Character control (.5 Day)
-- [ ] Projectile creation and cleanup (1 day)
-- [ ] Health mechanics for player and enemy (1 day)
-- [ ] AI? _(Find the closest enemy and auto rotate/fire)_
-- [ ] Coin drops and collection at end of level. (1 day)
-	- [ ] Particle fly to player?
-	- [ ] Scoring system
-- [ ] Level completion, power up presentation UI (1 day)
-	- [ ] Additional options if possible
-- [ ] Start game UI _(extra)_
-- [ ] Save mechanics?
-- [ ] Fancy, DOTS?
+- ~~Map creation (.5 Day)~~
+- Character control (.5 Day)
+- Projectile creation and cleanup (1 day)
+- Health mechanics for player and enemy (1 day)
+- AI? _(Find the closest enemy and auto rotate/fire)_
+- Coin drops and collection at end of level. (1 day)
+	- Particle fly to player?
+	- Scoring system
+- Level completion, power up presentation UI (1 day)
+	- Additional options if possible
+- Start game UI _(extra)_
+- Save mechanics?
+- Fancy, DOTS?
