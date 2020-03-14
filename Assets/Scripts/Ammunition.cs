@@ -10,7 +10,7 @@ public class Ammunition : MonoBehaviour
 
     [HideInInspector]
     public int DamageOfRound;
-    // Update is called once per frame
+    
     void Update()
     {
         float stride = RoundSpeed * Time.deltaTime;
@@ -42,7 +42,10 @@ public class Ammunition : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player")
         {
-            // Take damage
+            Destroy(gameObject);
+
+            collision.gameObject.GetComponent<IPawn>().OnBulletHit(DamageOfRound);
+
         }
     }
 }

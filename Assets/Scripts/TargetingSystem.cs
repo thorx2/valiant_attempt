@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TargetingSystem : MonoBehaviour
 {
+    public string TargetTag;
+
     bool enemyFound = false;
 
     bool gameOver = false;
@@ -14,7 +16,7 @@ public class TargetingSystem : MonoBehaviour
     [HideInInspector]
     public bool StopTargetAcquisition = false;
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (StopTargetAcquisition)
@@ -23,7 +25,7 @@ public class TargetingSystem : MonoBehaviour
             return;
         }
 
-        var possibleEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        var possibleEnemies = GameObject.FindGameObjectsWithTag(TargetTag);
         
         if (possibleEnemies.Length == 0)
         {

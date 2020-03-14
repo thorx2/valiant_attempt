@@ -20,6 +20,16 @@ public class WeponMechanic : MonoBehaviour
 
     private bool isFiring = false;
 
+    public bool IsStationaryTurret = true;
+
+    void Start()
+    {
+        if (IsStationaryTurret)
+        {
+            StartFiring();
+        }
+    }
+
     public void StartFiring()
     {
         if (!isFiring)
@@ -47,13 +57,9 @@ public class WeponMechanic : MonoBehaviour
 
             Ammunition ammo = Instantiate(Ammo, transform.position + (transform.forward), transform.rotation);
 
+            ammo.DamageOfRound = DamagePerHit;
+            
             ammo.LaunchTowards(transform.position + (transform.forward * Range));
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.DrawLine(transform.position, transform.position + (transform.forward * Range), Color.red, 0.5f);
     }
 }
