@@ -7,7 +7,7 @@
 - Coin drops and collection at end of level. (1 day)
 	- Particle fly to player?
 	- Scoring system
-- Level completion, power up presentation UI (1 day)
+- ~~Level completion, power up presentation UI (1 day)~~
 	- Additional options if possible
 - Start game UI _(extra)_
 - Save mechanics?
