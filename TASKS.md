@@ -1,9 +1,9 @@
 ### Tasks
 - ~~Map creation (.5 Day)~~
-- Character control (.5 Day)
-- Projectile creation and cleanup (1 day)
-- Health mechanics for player and enemy (1 day)
-- AI? _(Find the closest enemy and auto rotate/fire)_
+- ~~Character control (.5 Day)~~
+- ~~Projectile creation and cleanup (1 day)~~
+- ~~Health mechanics for player and enemy (1 day)~~
+- ~~AI? _(Find the closest enemy and auto rotate/fire)_~~
 - Coin drops and collection at end of level. (1 day)
 	- Particle fly to player?
 	- Scoring system
