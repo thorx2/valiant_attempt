@@ -16,11 +16,17 @@ public class PlayerMovement : MonoBehaviour
 
     bool gameOver = false;
 
+    private WeponMechanic weponMechanic;
+
     void Start()
     {
         cameraPosOffset = Camera.main.transform.position - transform.position;
 
         transform.position = RespawnPoint.position;
+
+        weponMechanic = GetComponent<WeponMechanic>();
+
+        weponMechanic.StartFiring();
     }
 
     // Update is called once per frame
@@ -41,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
             enemyFound = false;
 
             transform.position = Vector3.MoveTowards (transform.position, joyconDirection, stride);
+
+            weponMechanic.StopFiring();
         }
         else
         {
@@ -58,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         if (possibleEnemies.Length == 0)
         {
             gameOver = true;
+            weponMechanic.StopFiring();
             return;
         }
 
@@ -84,6 +93,8 @@ public class PlayerMovement : MonoBehaviour
             Quaternion rot = Quaternion.Euler( 0, transform.rotation.eulerAngles.y, 0 );
 
             transform.rotation = rot;
+
+            weponMechanic.StartFiring();
         }
     }
 
