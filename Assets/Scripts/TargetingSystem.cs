@@ -8,7 +8,7 @@ public class TargetingSystem : MonoBehaviour
 
     bool enemyFound = false;
 
-    bool gameOver = false;
+    public bool AllTargetsDestroyed = false;
 
     [HideInInspector]
     public GameObject NearestTarget;
@@ -21,7 +21,6 @@ public class TargetingSystem : MonoBehaviour
     {
         if (StopTargetAcquisition)
         {
-            NearestTarget = null;
             return;
         }
 
@@ -29,12 +28,14 @@ public class TargetingSystem : MonoBehaviour
         
         if (possibleEnemies.Length == 0)
         {
-            gameOver = true;
+            AllTargetsDestroyed = true;
 
             NearestTarget = null;
 
             return;
         }
+
+        AllTargetsDestroyed = false;
 
         //Arbitrally large value just beacasue...
         double dist = 100000000000;

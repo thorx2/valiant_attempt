@@ -10,8 +10,12 @@ public class PlayerMovement : MonoBehaviour
     public Joystick joycon;
     public bool IsMoving = false;
 
+    private TargetingSystem playerTargettingSystem;
+
     void Start()
     {
+        playerTargettingSystem = GetComponent<TargetingSystem>();
+
         cameraPosOffset = Camera.main.transform.position - transform.position;
     }
 
@@ -33,9 +37,12 @@ public class PlayerMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards (transform.position, joyconDirection, stride);
 
             IsMoving = true;
+
+            playerTargettingSystem.StopTargetAcquisition = true;
         }
         else
         {
+            playerTargettingSystem.StopTargetAcquisition = false;
             IsMoving = false;
         }
     }

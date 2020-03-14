@@ -29,6 +29,16 @@ public class PlayerController : IPawn
         if (playerMovement.IsMoving || targetingSystem.NearestTarget == null)
         {
             weponMechanic.StopFiring();
+
+            if (Manager.ActiveGameState == GameManager.EGameState.InLevel && targetingSystem.NearestTarget == null)
+            {
+                Manager.ActiveGameState = GameManager.EGameState.LevelCleared;
+            }
+        }
+
+        if (!targetingSystem.AllTargetsDestroyed)
+        {
+            Manager.ActiveGameState = GameManager.EGameState.InLevel;
         }
     }
 
@@ -39,7 +49,8 @@ public class PlayerController : IPawn
         if (MaxHealth <= 0)
         {
             Manager.ActiveGameState = GameManager.EGameState.LevelFail;
+
+            gameObject.SetActive(false);
         }
     }
-
 }
