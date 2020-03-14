@@ -10,11 +10,17 @@ public class PlayerMovement : MonoBehaviour
     public Joystick joycon;
     private GameObject nearestEnemy;
 
+    public Transform RespawnPoint;
+
     bool enemyFound = false;
+
+    bool gameOver = false;
 
     void Start()
     {
         cameraPosOffset = Camera.main.transform.position - transform.position;
+
+        transform.position = RespawnPoint.position;
     }
 
     // Update is called once per frame
@@ -24,23 +30,61 @@ public class PlayerMovement : MonoBehaviour
         
         if (joycon.Horizontal != 0 || joycon.Vertical != 0)
         {
-            transform.LookAt (new Vector3 (joycon.Horizontal, 0, joycon.Vertical));
+            Vector3 joyconDirection = new Vector3 (transform.position.x + joycon.Horizontal, 0.5f, transform.position.z + joycon.Vertical);
+
+            transform.LookAt (joyconDirection);
 
             Quaternion rot = Quaternion.Euler( 0, transform.rotation.eulerAngles.y, 0 );
 
             transform.rotation = rot;
 
             enemyFound = false;
+
+            transform.position = Vector3.MoveTowards (transform.position, joyconDirection, stride);
         }
         else
         {
-            // Find next enemy and attack
+            if (!enemyFound && !gameOver)
+            {
+                FindNearestEnemy();
+            }
         }
     }
 
     void FindNearestEnemy()
     {
+        var possibleEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        
+        if (possibleEnemies.Length == 0)
+        {
+            gameOver = true;
+            return;
+        }
 
+        //Arbitrally large value just beacasue...
+        double dist = 100000000000;
+
+        foreach (var enemy in possibleEnemies)
+        {
+            double currentEnemyDistance = Vector3.Distance(enemy.transform.position, transform.position);
+            if (dist > currentEnemyDistance)
+            {
+                dist = currentEnemyDistance;
+
+                nearestEnemy = enemy;
+
+                enemyFound = true;
+            }
+        }
+
+        if (nearestEnemy != null)
+        {
+            transform.LookAt (nearestEnemy.transform.position);
+
+            Quaternion rot = Quaternion.Euler( 0, transform.rotation.eulerAngles.y, 0 );
+
+            transform.rotation = rot;
+        }
     }
 
     void LateUpdate()
