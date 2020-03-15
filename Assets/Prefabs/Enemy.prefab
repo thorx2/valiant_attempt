@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetTag: Player
+  AllTargetsDestroyed: 0
   NearestTarget: {fileID: 0}
   StopTargetAcquisition: 0
 --- !u!114 &3715387486313885894
@@ -159,6 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 50
+  SpawnObjectOnDeath: {fileID: 3187709209829080020, guid: b2ecae9374d6fd94ab9a5236bfd8189c,
+    type: 3}
 --- !u!1001 &57233271372981373
 PrefabInstance:
   m_ObjectHideFlags: 0

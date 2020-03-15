@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +37,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject LevelClearMenu;
 
+    public GameObject InGameScoreBoard;
+
+    public Text CurrentScoreText;
+
+    private int previousScore = -1;
+
+    [HideInInspector]
+    public int CurrentScore = 0;
+
     void Start()
     {
         MainMenu.SetActive(true);
@@ -60,8 +70,12 @@ public class GameManager : MonoBehaviour
             {
                 SpawnPoints[currentPos].IsUsed = true;
                 
-                Instantiate(EnemyPrefab, SpawnPoints[currentPos].SpawnPoint.position, SpawnPoints[currentPos].SpawnPoint.rotation);
+                GameObject spawnedEvemy = Instantiate(EnemyPrefab, SpawnPoints[currentPos].SpawnPoint.position, SpawnPoints[currentPos].SpawnPoint.rotation);
                 
+                spawnedEvemy.GetComponent<EnemyController>().Manager = this;
+
+                spawnedEvemy.GetComponent<EnemyController>().Target = PlayerObject.gameObject.transform;
+
                 spawnCount++;
             }
         }
@@ -69,10 +83,18 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (CurrentScore != previousScore)
+        {
+            previousScore = CurrentScore;
+
+            CurrentScoreText.text = $"Current Score: {previousScore}";
+        }
+
         switch (ActiveGameState)
         {
             case EGameState.LevelFail:
                 LevelFailedMenu.SetActive(true);
+                InGameScoreBoard.SetActive(false);
                 break;
 
             case EGameState.LevelCleared:
@@ -111,6 +133,8 @@ public class GameManager : MonoBehaviour
 
             case EGameState.InLevel:
                 
+                InGameScoreBoard.SetActive(true);
+
                 LevelCompleteGate.SetActive(false);
 
                 break;
@@ -155,6 +179,10 @@ public class GameManager : MonoBehaviour
         CurrentLevel = 1;
 
         ActiveGameState = EGameState.LevelComplete;
+
+        CurrentScore = 0;
+        
+        previousScore = -1;
     }
 
     public void QuitGame()
