@@ -187,6 +187,13 @@ public class GameManager : MonoBehaviour
         previousScore = -1;
 
         PlayerObject.GetComponent<PlayerController>().OnPlayerLevelUp();
+
+        var spawnedCoins = GameObject.FindGameObjectsWithTag("Props");
+
+        foreach(GameObject coin in spawnedCoins)
+        {
+            Destroy(coin.gameObject);
+        }
     }
 
     public void QuitGame()
