@@ -9,6 +9,6 @@
 	- ~~Scoring system~~
 - ~~Level completion, power up presentation UI (1 day)~~
 	- Additional options if possible
-- Start game UI _(extra)_
+- ~~Start game UI _(extra)_~~
 - Save mechanics?
 - Fancy, DOTS?
