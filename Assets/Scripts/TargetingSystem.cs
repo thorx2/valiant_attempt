@@ -5,9 +5,6 @@ using UnityEngine;
 public class TargetingSystem : MonoBehaviour
 {
     public string TargetTag;
-
-    bool enemyFound = false;
-
     public bool AllTargetsDestroyed = false;
 
     [HideInInspector]
@@ -48,8 +45,6 @@ public class TargetingSystem : MonoBehaviour
                 dist = currentEnemyDistance;
 
                 NearestTarget = enemy;
-
-                enemyFound = true;
             }
         }
 

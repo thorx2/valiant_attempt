@@ -158,6 +158,8 @@ public class GameManager : MonoBehaviour
 
     public void StartNextLevel()
     {
+        PlayerObject.GetComponent<PlayerController>().OnPlayerLevelUp();
+        
         LevelClearMenu.SetActive(false);
 
         ActiveGameState = EGameState.LevelComplete;
@@ -183,6 +185,8 @@ public class GameManager : MonoBehaviour
         CurrentScore = 0;
         
         previousScore = -1;
+
+        PlayerObject.GetComponent<PlayerController>().OnPlayerLevelUp();
     }
 
     public void QuitGame()

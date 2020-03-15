@@ -53,4 +53,17 @@ public class PlayerController : IPawn
             gameObject.SetActive(false);
         }
     }
+
+    public void OnPlayerLevelUp()
+    {
+        if (weponMechanic.BurstFireRate < 4)
+        {
+            weponMechanic.BurstFireRate += 1;
+        }
+    }
+
+    public void OnPlayerDied()
+    {
+        weponMechanic.BurstFireRate = 1;
+    }
 }
