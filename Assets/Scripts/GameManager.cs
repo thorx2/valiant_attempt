@@ -118,6 +118,8 @@ public class GameManager : MonoBehaviour
 
                 SpawnEnemies();
 
+                ResetTargets();
+
                 ActiveGameState = EGameState.InLevel;
 
                 ++CurrentLevel;
@@ -148,6 +150,8 @@ public class GameManager : MonoBehaviour
         MainMenu.SetActive(false);
 
         SpawnEnemies();
+
+        ResetTargets();
 
         PlayerObject.gameObject.SetActive(true);
 
@@ -201,5 +205,10 @@ public class GameManager : MonoBehaviour
 #if !UNITY_EDITOR
         Application.Quit();
 #endif        
+    }
+
+    public void ResetTargets()
+    {
+        PlayerObject.GetComponent<TargetingSystem>().RefreshTargets();
     }
 }

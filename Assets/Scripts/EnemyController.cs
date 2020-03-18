@@ -9,6 +9,8 @@ public class EnemyController : IPawn
     public GameManager Manager;
     [HideInInspector]
     public Transform Target;
+
+    public bool IsAlive = true;
     
     public override void OnBulletHit(int damage)
     {
@@ -39,6 +41,8 @@ public class EnemyController : IPawn
             }
             
             Destroy(gameObject);
+
+            Manager.ResetTargets();
         }
     }
 }

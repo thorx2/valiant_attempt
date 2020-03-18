@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,17 +13,26 @@ public class TargetingSystem : MonoBehaviour
     [HideInInspector]
     public bool StopTargetAcquisition = false;
 
-    
+    private List<GameObject> possibleEnemies = null;
+
+    void Start()
+    {
+        RefreshTargets();
+    }
+
+    public void RefreshTargets()
+    {
+        possibleEnemies = GameObject.FindGameObjectsWithTag(TargetTag).ToList();
+    }
+
     void Update()
     {
         if (StopTargetAcquisition)
         {
             return;
         }
-
-        var possibleEnemies = GameObject.FindGameObjectsWithTag(TargetTag);
         
-        if (possibleEnemies.Length == 0)
+        if (possibleEnemies.Count == 0)
         {
             AllTargetsDestroyed = true;
 
@@ -37,14 +46,19 @@ public class TargetingSystem : MonoBehaviour
         //Arbitrally large value just beacasue...
         double dist = 100000000000;
 
+        possibleEnemies.RemoveAll( enemy => enemy == null);
+        
         foreach (var enemy in possibleEnemies)
         {
-            double currentEnemyDistance = Vector3.Distance(enemy.transform.position, transform.position);
-            if (dist > currentEnemyDistance)
+            if(enemy != null)
             {
-                dist = currentEnemyDistance;
+                double currentEnemyDistance = Vector3.Distance(enemy.transform.position, transform.position);
+                if (dist > currentEnemyDistance)
+                {
+                    dist = currentEnemyDistance;
 
-                NearestTarget = enemy;
+                    NearestTarget = enemy;
+                }
             }
         }
 
