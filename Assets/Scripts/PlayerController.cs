@@ -56,7 +56,11 @@ public class PlayerController : IPawn
 
     public void OnPlayerLevelUp()
     {
-        if (weponMechanic.BurstFireRate < 4)
+        if (!weponMechanic.EnableSideFire)
+        {
+            weponMechanic.EnableSideFire = true;
+        }
+        else if (weponMechanic.BurstFireRate < 4)
         {
             weponMechanic.BurstFireRate += 1;
         }
@@ -65,5 +69,6 @@ public class PlayerController : IPawn
     public void OnPlayerDied()
     {
         weponMechanic.BurstFireRate = 1;
+        weponMechanic.EnableSideFire = false;
     }
 }

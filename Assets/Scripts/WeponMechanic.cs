@@ -25,6 +25,8 @@ public class WeponMechanic : MonoBehaviour
     [Tooltip("Number of bullets fired simultaniously on each trigger pull")]
     public int BurstFireRate = 1;
 
+    public bool EnableSideFire = false;
+
     void Start()
     {
         if (IsStationaryTurret)
@@ -79,6 +81,21 @@ public class WeponMechanic : MonoBehaviour
             ammo.DamageOfRound = DamagePerHit;
             
             ammo.LaunchTowards(transform.position + (transform.forward * Range));
+
+            if (EnableSideFire)
+            {
+                Ammunition rightShot = Instantiate(Ammo, transform.position + (transform.right), transform.rotation);
+
+                rightShot.DamageOfRound = DamagePerHit;
+
+                rightShot.LaunchTowards(transform.position + (transform.right * Range));
+
+                Ammunition leftShot = Instantiate(Ammo, transform.position + (-transform.right), transform.rotation);
+
+                leftShot.DamageOfRound = DamagePerHit;
+                
+                leftShot.LaunchTowards(transform.position + (-transform.right * Range));
+            }
         }
     }
 }
