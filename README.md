@@ -31,3 +31,8 @@ completion, before respawning the character. For this test , add just one abilit
 It gives the character an ability to shoot 3 arrows simultaneously at a time ,
 one in front & 2 on either sides ( left & right from character position )
 This ability should be activated once acquired after completing the level
+
+
+### External packages used.
+- Unity standard assets pack.
+- [Joystick Pack](https://assetstore.unity.com/packages/tools/input-management/joystick-pack-107631)
