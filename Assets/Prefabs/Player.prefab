@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6432558073624885058}
   - component: {fileID: 6432558073624885057}
   - component: {fileID: 6432558073624885059}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -97,11 +97,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
+  m_Constraints: 94
+  m_CollisionDetection: 3
 --- !u!114 &6432558073624885056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +147,8 @@ MonoBehaviour:
   Range: 10
   Ammo: {fileID: 3681033159115907508, guid: 8f00500fd51bca94f95f4451d11d0414, type: 3}
   IsStationaryTurret: 0
+  BurstFireRate: 1
+  EnableSideFire: 0
 --- !u!114 &6432558073624885057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetTag: Enemy
+  AllTargetsDestroyed: 0
   NearestTarget: {fileID: 0}
   StopTargetAcquisition: 0
 --- !u!1001 &6432558075076603524

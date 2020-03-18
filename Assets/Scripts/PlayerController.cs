@@ -9,6 +9,7 @@ public class PlayerController : IPawn
 
     private WeponMechanic weponMechanic;
 
+    private Rigidbody rigidBody;
     void Start()
     {
         weponMechanic = GetComponent<WeponMechanic>();
@@ -16,6 +17,8 @@ public class PlayerController : IPawn
         targetingSystem = GetComponent<TargetingSystem>();
 
         playerMovement = GetComponent<PlayerMovement>();
+
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     void Update()

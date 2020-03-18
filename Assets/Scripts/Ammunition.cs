@@ -10,8 +10,6 @@ public class Ammunition : MonoBehaviour
 
     [HideInInspector]
     public int DamageOfRound;
-
-    public bool ShouldBeDead = false;
     
     void Update()
     {
@@ -35,17 +33,17 @@ public class Ammunition : MonoBehaviour
         hasBeenFired = true;
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player")
+    private void OnTriggerEnter(Collider other)
+    {    
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
 
-            collision.gameObject.GetComponent<IPawn>().OnBulletHit(DamageOfRound);
+            other.gameObject.GetComponent<IPawn>().OnBulletHit(DamageOfRound);
         }
-        else if (collision.gameObject.tag == "Arena")
+        else if (other.gameObject.tag == "Arena")
         {
-            ShouldBeDead = true;
+            Destroy(gameObject);
         }
     }
 }

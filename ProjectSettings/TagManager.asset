@@ -17,9 +17,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - CollidableObjects
+  - SkipCollision
+  - PlayerLayer
   - 
   - 
   - 

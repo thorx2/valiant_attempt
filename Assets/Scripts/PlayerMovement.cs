@@ -12,11 +12,15 @@ public class PlayerMovement : MonoBehaviour
 
     private TargetingSystem playerTargettingSystem;
 
+    private Rigidbody rigidBody;
+
     void Start()
     {
         playerTargettingSystem = GetComponent<TargetingSystem>();
 
         cameraPosOffset = Camera.main.transform.position - transform.position;
+
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     
@@ -44,6 +48,12 @@ public class PlayerMovement : MonoBehaviour
         {
             playerTargettingSystem.StopTargetAcquisition = false;
             IsMoving = false;
+
+            if (rigidBody)
+            {
+                rigidBody.velocity = Vector3.zero;
+                rigidBody.angularVelocity = Vector3.zero;
+            }
         }
     }
 

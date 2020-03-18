@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3715387486313885894}
   - component: {fileID: 2999161673164370251}
   - component: {fileID: 8262424233435338996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -131,6 +131,8 @@ MonoBehaviour:
   Range: 10
   Ammo: {fileID: 3681033159115907508, guid: 8f00500fd51bca94f95f4451d11d0414, type: 3}
   IsStationaryTurret: 1
+  BurstFireRate: 1
+  EnableSideFire: 0
 --- !u!54 &2999161673164370251
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,6 +164,9 @@ MonoBehaviour:
   MaxHealth: 50
   SpawnObjectOnDeath: {fileID: 3187709209829080020, guid: b2ecae9374d6fd94ab9a5236bfd8189c,
     type: 3}
+  Manager: {fileID: 0}
+  Target: {fileID: 0}
+  IsAlive: 1
 --- !u!1001 &57233271372981373
 PrefabInstance:
   m_ObjectHideFlags: 0

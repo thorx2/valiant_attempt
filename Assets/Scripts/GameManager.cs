@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
         
         previousScore = -1;
 
-        PlayerObject.GetComponent<PlayerController>().OnPlayerLevelUp();
+        PlayerObject.GetComponent<PlayerController>().OnPlayerDied();
 
         var spawnedCoins = GameObject.FindGameObjectsWithTag("Props");
 
